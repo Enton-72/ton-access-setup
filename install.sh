@@ -10,6 +10,7 @@ export declare -a DEPENDENCY_APPS=("git python3 curl crontab docker mytonctrl jq
 export SCRIPT_NAME="${0##*/}"
 export PROJECT_DIRECTORY="$(dirname "$(realpath $SCRIPT_NAME)")"
 export PROJECT_TON_ACCESS_DIR="${PROJECT_DIRECTORY}/ton-access"
+export CONFIG_DIR="${PROJECT_TON_ACCESS_DIR}/config"
 export GENERATED_LOCAL_CONF="$(awk -F '\"' '/defaultLocalConfigPath/ {print $2}' /usr/src/mytonctrl/mytoninstaller.py)"
 export CONFIG_FILE="${PROJECT_DIRECTORY}/install_conf.json"
 
@@ -60,6 +61,6 @@ CURRENT_TAG="$(git describe --tags)"
 ### Base installation
 ./baseInstall.sh
   	
-#rm -r "$CONFIG_DIR"
+rm -r "$CONFIG_DIR"
 
 ### Na kraju cleanup bi valjao posto se svaki put pokrece/skida projekat iznova 
